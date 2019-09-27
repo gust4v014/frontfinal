@@ -1,0 +1,49 @@
+<form class="example-container" [formGroup]="form" (ngSubmit)="operar()" #frmExamen="ngForm">
+
+    <div [hidden]="true">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="ID" required formControlName="id">
+        </mat-form-field>
+    </div>
+
+    <div class="example-container">
+        <mat-form-field>
+            <input type="text" placeholder="Paciente" matInput [matAutocomplete]="autoPaciente"
+                [formControl]="myControlPaciente" formControlName="paciente">
+        </mat-form-field>
+        <mat-autocomplete #autoPaciente="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let p of filteredOptions | async" [value]="p">
+                {{ p.nombres }} {{p.apellidos}}
+            </mat-option>
+        </mat-autocomplete>
+    </div>
+
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Escoge una fecha" [max]="maxFecha"
+            formControlName="fecha">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Temperatura" [(ngModel)]="temperatura" formControlName="temperatura">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Pulso" [(ngModel)]="pulso" formControlName="pulso">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Ritmo" [(ngModel)]="ritmo" formControlName="ritmo">
+    </mat-form-field>
+
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="frmExamen.invalid">
+        <mat-icon>done</mat-icon>
+        <span>Aceptar</span>
+    </button>
+    <button mat-raised-button color="accent" routerLink='/signal' type="button">
+        <mat-icon>close</mat-icon>
+        <span>Cancelar</span>
+    </button>
+</form>
+
+<br />

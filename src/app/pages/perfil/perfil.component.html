@@ -1,0 +1,17 @@
+<mat-toolbar>Pefil</mat-toolbar>
+
+<div class="container">
+    Usuario:
+    <mat-list>
+        <mat-list-item>
+            {{ usuario }}
+
+        </mat-list-item>
+    </mat-list>
+    Roles de Usuario:
+    <mat-list>
+        <mat-list-item *ngFor="let rol of roles">
+            {{rol}}
+        </mat-list-item>
+    </mat-list>
+</div>
